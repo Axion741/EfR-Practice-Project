@@ -268,14 +268,24 @@ private Race myRace;
 	}
 	
 	void exit_hatch_0() {
-		text.text = ("At the far end of the room is a ladder, leading upto a hatch in the ") +
+		if (myRace == Race.thief) {
+			text.text = ("At the far end of the room is a ladder, leading upto a hatch in the ") +
+						("roof. The light you saw is peeking through the cracks.\n\nA cursory push ") +
+						("indicates that the hatch is locked, and you can feel a small keyhole ") +
+						("in the edge nearest the wall. Unfortunately it’s too dark to do any real work with.\n\n") +
+						("Press R to return.");
+			
+			if (Input.GetKeyDown (KeyCode.R))		{myState = States.body;}
+		
+		}else if (myRace != Race.thief){
+			text.text = ("At the far end of the room is a ladder, leading upto a hatch in the ") +
 					("roof. The light you saw is peeking through the cracks.\n\nA cursory push ") +
 					("indicates that the hatch is locked, and you can feel a small keyhole ") +
-					("in the edge nearest the wall. <thief – Unfortunately it’s too dark to do any real work with.> ") +
+					("in the edge nearest the wall.\n\n") +
 					("Press R to return.");
 		
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.body;}
-				
+		}
 	}
 	
 	void body_key_0() {
@@ -352,7 +362,7 @@ private Race myRace;
 					("the clueless pair.\n\nA heavy wooden bowl slides into your foot, ") +
 					("and you quickly duck down to grab it. One good swing into the ") +
 					("left sailor’s temple has him down for the count, and the second turns in shock.") +
-					("Press C to continue.");
+					("\n\nPress C to continue.");
 					
 		if (Input.GetKeyDown (KeyCode.C))		{myState = States.fight_scene;}
 					
@@ -503,7 +513,7 @@ private Race myRace;
 		text.text = ("From behind the boxes you have a better view of the situation ") +
 					("on the deck. At the far end a catapult is firing flaming shells out into ") +
 					("the night.\n\nSailors and soldiers are running between boxes to keep it loaded.\n\n") +
-					("To your right, a lifeboat hangs limply over the side of the ship.") +
+					("To your right, a lifeboat hangs limply over the side of the ship.\n\n") +
 					("Press W to watch the guards, or B to run for the Boat.");
 					
 		if (Input.GetKeyDown (KeyCode.W))		{myState = States.deck_guard;}
@@ -533,17 +543,29 @@ private Race myRace;
 	}
 	//Upper Route//
 	void upper_hatch() {
-		text.text = ("Balanced on the ladder, you inspect the padlock. It fairly common, ") +
-					("and is probably easy to pick with the right skills.\n\nAlternatively ") +
-					("it’s possible that the right spell could pop it open easily enough.\n\n  ") +
-					("Press R to return. <Thief – Press P to pick the lock><Wizard – Press U to cast Unlock>");
-		
 		if (myRace == Race.fighter) {
+			text.text = ("Balanced on the ladder, you inspect the padlock. It fairly common, ") +
+						("and is probably easy to pick with the right skills.\n\nAlternatively ") +
+						("it’s possible that the right spell could pop it open easily enough.\n\n") +
+						("Press R to return.");
+			
 			if (Input.GetKeyDown (KeyCode.R))		{myState = States.corridor_hatch;}
+			
 		}else if (myRace == Race.thief) {
+			text.text = ("Balanced on the ladder, you inspect the padlock. It fairly common, ") +
+						("and is probably easy to pick with the right skills.\n\nAlternatively ") +
+						("it’s possible that the right spell could pop it open easily enough.\n\n") +
+						("Press R to return or press P to pick the lock.");
+			
 			if (Input.GetKeyDown (KeyCode.R))		{myState = States.corridor_hatch;}
 			if (Input.GetKeyDown (KeyCode.P))		{myState = States.upper_hatch_open;}
+			
 		}else if (myRace == Race.wizard) {
+			text.text = ("Balanced on the ladder, you inspect the padlock. It fairly common, ") +
+						("and is probably easy to pick with the right skills.\n\nAlternatively ") +
+						("it’s possible that the right spell could pop it open easily enough.\n\n") +
+						("Press R to return or press U to cast Unlock.");
+			
 			if (Input.GetKeyDown (KeyCode.R))		{myState = States.corridor_hatch;}
 			if (Input.GetKeyDown (KeyCode.U))		{myState = States.upper_hatch_open;}
 		}
