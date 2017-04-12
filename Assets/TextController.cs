@@ -101,6 +101,8 @@ private Race myRace;
 					("fate has smiled upon you today. The time of your escape is ") +
 					("nigh...\n\nWho are you?\n\nPress F for Fighter, T for Thief ") +
 					("or W for Wizard.");
+		
+		myRace = Race.undefined;
 					
 		if (Input.GetKeyDown (KeyCode.F))		{myRace = Race.fighter;}
 		if (Input.GetKeyDown (KeyCode.T))		{myRace = Race.thief;}
@@ -121,10 +123,10 @@ private Race myRace;
 	}
 	
 	void t_cell () {
-		text.text = ("While some would call you a thief, you prefer to see your ") +
+		text.text = ("While some would call you a thief, you prefer to see your") +
 					("self as an entrepreneur.\n\nAdmittedly your methods may be a ") +
 					("touch unorthodox, and you know more about lockpicking than ") +
-					("is probably healthy, but you’ve done well for yourself until  ") +
+					("is probably healthy, but you’ve done well for yourself until ") +
 					("this particular setback.\n\nPress W to wake up.");
 		
 		if (Input.GetKeyDown (KeyCode.W))		{myState = States.cell;}		
@@ -178,7 +180,7 @@ private Race myRace;
 	void cell_open() {
 		text.text = ("The cell door is now swinging open. On closer inspection you see") +
 					("a small cannonball lodged in the metal lock mechanism.") +
-					("\n\n A lucky escape indeed!\n\nPress C to enter the corridor");
+					("\n\nA lucky escape indeed!\n\nPress C to enter the corridor");
 					
 		if (Input.GetKeyDown (KeyCode.C))		{myState = States.corridor;}
 
@@ -188,19 +190,19 @@ private Race myRace;
 		text.text = ("The corridor outside the cell is similarly waterlogged, not ") +
 					("helped by the torrent of water now spewing in from the hole ") +
 					("left by your lucky cannonball.\n\nAt the end of the corridor you ") +
-					("can see a ladder that seems to be lead to a hatch in the ceiling.\n\n") +
-					("Press F to look around on the floor, L to move to the ladder, ") +
-					("Or C to return to your cell.");
+					("can see a ladder that seems to lead to a hatch in the ceiling.\n\n") +
+					("Press F to look around on the floor, H to move to the hatch, ") +
+					("Or R to return to your cell.");
 					
 		if (Input.GetKeyDown (KeyCode.F))		{myState = States.floor;}
-		if (Input.GetKeyDown (KeyCode.L))		{myState = States.corridor_hatch;}
-		if (Input.GetKeyDown (KeyCode.C))		{myState = States.cell_open;}
+		if (Input.GetKeyDown (KeyCode.H))		{myState = States.corridor_hatch;}
+		if (Input.GetKeyDown (KeyCode.R))		{myState = States.cell_open;}
 	
 	}
 	
 	void floor() {
 		text.text = ("You quickly try to look around on the floor, but the churning ") +
-					("waters make it difficult to make anything out.\\You are made  ") +
+					("waters make it difficult to make anything out.\n\nYou are made  ") +
 					("acutely aware of how quickly the water level is rising however.\n\n") +
 					("Press R to return.") ;
 					
@@ -255,13 +257,13 @@ private Race myRace;
 	
 	void body() {
 		text.text = ("The shape in the water is a body, apparently a sailor unlucky ") +
-					("enough to be trapped here when the room flooded. \n\nIt could") +
+					("enough to be trapped here when the room flooded. \n\nIt could ") +
 					("be worth checking him over.\n\nIn the distance a faint light ") +
-					("looks to be peeking through the roof.\n\nPress C to check the body," ) +
-					("S to swim towards the light or R to return. ");	
+					("looks to be peeking through the roof.\n\nPress C to check the body, " ) +
+					("L to swim towards the light or R to return. ");	
 					
 		if (Input.GetKeyDown (KeyCode.C))		{myState = States.body_key_0;}
-		if (Input.GetKeyDown (KeyCode.S))		{myState = States.exit_hatch_0;}
+		if (Input.GetKeyDown (KeyCode.L))		{myState = States.exit_hatch_0;}
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.lower_storage_0;}
 		
 
@@ -269,8 +271,8 @@ private Race myRace;
 	
 	void exit_hatch_0() {
 		if (myRace == Race.thief) {
-			text.text = ("At the far end of the room is a ladder, leading upto a hatch in the ") +
-						("roof. The light you saw is peeking through the cracks.\n\nA cursory push ") +
+			text.text = ("At the far end of the room is a ladder, leading up to a hatch in the ") +
+						("ceiling. The light you saw is peeking through the cracks.\n\nA cursory push ") +
 						("indicates that the hatch is locked, and you can feel a small keyhole ") +
 						("in the edge nearest the wall. Unfortunately it’s too dark to do any real work with.\n\n") +
 						("Press R to return.");
@@ -278,8 +280,8 @@ private Race myRace;
 			if (Input.GetKeyDown (KeyCode.R))		{myState = States.body;}
 		
 		}else if (myRace != Race.thief){
-			text.text = ("At the far end of the room is a ladder, leading upto a hatch in the ") +
-					("roof. The light you saw is peeking through the cracks.\n\nA cursory push ") +
+			text.text = ("At the far end of the room is a ladder, leading up to a hatch in the ") +
+					("ceiling. The light you saw is peeking through the cracks.\n\nA cursory push ") +
 					("indicates that the hatch is locked, and you can feel a small keyhole ") +
 					("in the edge nearest the wall.\n\n") +
 					("Press R to return.");
@@ -299,8 +301,8 @@ private Race myRace;
 	void lower_storage_1() {
 		text.text = ("From the center of the room, you can just about make out the ") +
 					("sailor’s body, an extinguished lamp hanging above the water, and a ") +
-					("telltale glow of light from the furthest end of the room.\n\nAnother  ") +
-					("exit perhaps?\n\n Press B to check the body again, L to swim to the lamp ") +
+					("telltale glow of light from the furthest end of the room.\n\nAnother ") +
+					("exit perhaps?\n\nPress B to check the body again, L to swim to the lamp ") +
 					("or S to swim towards the light.");
 		
 		if (Input.GetKeyDown (KeyCode.B))		{myState = States.body_key_1;}
@@ -311,8 +313,8 @@ private Race myRace;
 	
 	void body_key_1() {
 		text.text = ("On closer inspection the sailor looks to have taken a blow to ") +
-					("the head. Perhaps he was caught unawares by some falling cargo. ") +
-					("Press R to return.  ") ;	
+					("the head. Perhaps he was caught unawares by some falling cargo.\n\n") +
+					("Press R to return.") ;	
 
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.lower_storage_1;}
 		
@@ -320,8 +322,8 @@ private Race myRace;
 	
 	void lamp_1() {
 		text.text = ("The broken lamp still swings limply from the roof, though ") +
-					("now noticeably closer to the water line. It seems this room ") +
-					("isn’t quite finished flooding just yet. Press R to return. ") ;
+					("now noticeably closer to the water line.\n\nIt seems this room ") +
+					("isn’t quite finished flooding just yet.\n\nPress R to return. ") ;
 					
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.lower_storage_1;}
 
@@ -340,10 +342,10 @@ private Race myRace;
 	
 	void galley_hatch() {
 		text.text = ("The hatch leads up to a small alcove off of a well lit room. ") +
-					("Looking out you see what looks to be the ships galley, with two ") +
-					("long tables set out, and wooden crockery sliding around the floor  ") +
-					("as the ship rocks.\n\nTwo sailors bearing the sign of the raven stand  ") +
-					("to the side, looking out of a porthole.\n\nOpposite them is a box ") +
+					("Looking out you see what looks to be the ships galley, with ") +
+					("wooden crockery sliding around under two long tables.") +
+					("\n\nTwo sailors bearing the sign of the raven stand ") +
+					("to the side, looking out of a porthole. Opposite them is a box ") +
 					("which looks to be holding various weapons and equipment.\n\nPress C to continue.");
 		
 		if (myRace == Race.fighter) {			
@@ -362,16 +364,16 @@ private Race myRace;
 					("the clueless pair.\n\nA heavy wooden bowl slides into your foot, ") +
 					("and you quickly duck down to grab it. One good swing into the ") +
 					("left sailor’s temple has him down for the count, and the second turns in shock.") +
-					("\n\nPress C to continue.");
+					("\n\nPress F to fight!");
 					
-		if (Input.GetKeyDown (KeyCode.C))		{myState = States.fight_scene;}
+		if (Input.GetKeyDown (KeyCode.F))		{myState = States.fight_scene;}
 					
 	}
 	
 	void fight_scene() {
 		text.text = ("The second sailor doesn’t take long to recover, drawing a mace from the ") +
 					("loop of his belt. You’ll need a weapon to even the odds. Throwing the bowl ") +
-					("to distract him, you quickly check over his friends body for options.\n\n ") +
+					("to distract him, you quickly check over his friends body for options.\n\n") +
 					("A heavy iron mace sits stuck through his belt at an odd angle, and a dagger is ") +
 					("sheathed in the middle of his back.\n\nPress M for Mace or D for Dagger.");
 
@@ -382,7 +384,7 @@ private Race myRace;
 	void mace() {
 		text.text = ("You grab at the Mace and try to tug it free, but the angle of his ") +
 					("limp body has it stuck fast. You quickly turn to find another option, ") +
-					("only to see the head of your opponent’s mace swinging straight towards you./n/n  ") +
+					("only to see the head of your opponent’s mace swinging straight towards you.\n\n") +
 					("You are overcome by excruciating pain, and then remember nothing more than darkness.\n\n") +
 					("Press B to go back and try again, or R to restart.");
 					
@@ -391,11 +393,11 @@ private Race myRace;
 		
 	}
 	void knife() {
-		text.text = ("Knowing you have little time, you grab at the dagger, and it quickly ") +
-					("slides from its sheath. \n\nYou have just enough time to roll away as  ") +
-					("the sailor’s mace skims your forehead, and leap into a counterattack.  ") +
-					("A swift stab into his leg interrupts him long enough for a good, hard punch ") +
-					("across the jaw, sending him careening into the wall and out of consciousness. ") +
+		text.text = ("Knowing you have little time, you grab at the dagger and quickly ") +
+					("pull it from its sheath. \n\nYou have just enough time to roll away as ") +
+					("the sailor’s mace skims your forehead, and leap into a counterattack.") +
+					("\n\nA swift stab into his leg interrupts him long enough for a good, hard punch ") +
+					("across the jaw, sending him careening into the wall and out of consciousness.\n\n") +
 					("Press C to continue.");
 					
 		if (Input.GetKeyDown (KeyCode.C))		{myState = States.galley_safe;}
@@ -405,7 +407,7 @@ private Race myRace;
 	void galley_safe() {
 		text.text = ("As the last sailor falls to the ground, you are free to take a moment to ") +
 					("catch your breath and find your belongings.\n\nOn the left is a box  ") +
-					("of varying equipment, and at the opposite end of the room is a doorway.\n\n ") +
+					("of varying equipment, and at the opposite end of the room is a doorway.\n\n") +
 					("Press E to check the equipment box, or D to check the door. ");
 					
 		if (Input.GetKeyDown (KeyCode.E))		{myState = States.equipment;}
@@ -415,12 +417,12 @@ private Race myRace;
 	
 	void w_galley() {
 		text.text = ("Despite being somewhat drained from your captivity and icy cold ") +
-					("escape, the two of them look close enough together to deal with.\n\n ") +
-					("It takes a serious effort to will the arcane energies into being in this state,  ") +
+					("escape, the two of them look close enough together to deal with.\n\n") +
+					("It takes a serious effort to will the arcane energies into being in this state, ") +
 					("but you’re fairly certain that you have enough strength left for this spell.\n\n") +
-					("Press S to cast Sleep.");
+					("Press M to cast Sleep.");
 					
-		if (Input.GetKeyDown (KeyCode.S))		{myState = States.galley_safe;}
+		if (Input.GetKeyDown (KeyCode.M))		{myState = States.galley_safe;}
 
 	}
 	
@@ -438,7 +440,7 @@ private Race myRace;
 	void galley_door() {
 		text.text = ("The wooden door does little to quiet the raging storm outside. ") +
 					("Judging by the howl of the wind and the rain seeping under the frame, ") +
-					("this door must lead to the deck of the ship.\n\nFreedom is close now.\n\n ") +
+					("this door must lead to the deck of the ship.\n\nFreedom is close now.\n\n") +
 					("Press O to Open the door and head outside, E to inspect the equipment, or R to return.") ;
 		
 		if (Input.GetKeyDown (KeyCode.O))		{myState = States.deck_doorway;}
@@ -450,7 +452,7 @@ private Race myRace;
 	void deck_doorway() {
 		text.text = ("The wind outside is deafening, the rain falling in horizontal sheets. ") +
 					("On the deck you can see shadows running frantically between boxes and ") +
-					("the ship’s prow.\n\nJust ahead is a pile of boxes covered in netting. Looks  ") +	
+					("the ship’s prow.\n\nJust ahead is a pile of boxes covered in netting. Looks ") +	
 					("like a good spot to hide and take stock.\n\nPress H to hide behind the boxes.");
 	
 		if (Input.GetKeyDown (KeyCode.H))		{myState = States.deck_boxes;}
@@ -468,7 +470,7 @@ private Race myRace;
 	
 	void t_equipment() {
 		text.text = ("The box is full of assorted equipment, presumably from various ") +
-					("prisoners the ship has taken. You quickly spot your own.\n\n ") +
+					("prisoners the ship has taken. You quickly spot your own.\n\n") +
 					("Quietly slipping your leather armour over your head and donning your  ") +
 					("cloak, you immediately feel more comfortable. Your daggers slip seamlessly ") +
 					("into their sheathes as you turn to face the two unaware sailors.\n\n") +
@@ -502,7 +504,7 @@ private Race myRace;
 	void t_galley_door() {
 		text.text = ("The wooden door does little to quiet the raging storm outside. ") +
 					("Judging by the howl of the wind and the rain seeping under the frame, ") +
-					("this door must lead to the deck of the ship.\n\nFreedom is close now.\n\n ") +
+					("this door must lead to the deck of the ship.\n\nFreedom is close now.\n\n") +
 					("Press O to Open the door and head outside.") ;
 					
 		if (Input.GetKeyDown (KeyCode.O))		{myState = States.deck_doorway;}
@@ -535,7 +537,7 @@ private Race myRace;
 		text.text = ("You dive into the lifeboat and quickly look around for the guards. You seem to ") +
 					("have escaped notice.\n\nThe boat looks to be lowered using a pulley system, but ") +
 					("a few tugs indicate that it’s jammed.\n\nYou could probably cut the rope to drop ") +
-					("Into the water.\n\nPress C to cut the rope or R to return to the boxes.") ;
+					("into the water.\n\nPress C to cut the rope or R to return to the boxes.") ;
 
 		if (Input.GetKeyDown (KeyCode.C))		{myState = States.boat_down;}
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.deck_boxes;}
@@ -564,10 +566,10 @@ private Race myRace;
 			text.text = ("Balanced on the ladder, you inspect the padlock. It fairly common, ") +
 						("and is probably easy to pick with the right skills.\n\nAlternatively ") +
 						("it’s possible that the right spell could pop it open easily enough.\n\n") +
-						("Press R to return or press U to cast Unlock.");
+						("Press R to return or press M to cast Unlock.");
 			
 			if (Input.GetKeyDown (KeyCode.R))		{myState = States.corridor_hatch;}
-			if (Input.GetKeyDown (KeyCode.U))		{myState = States.upper_hatch_open;}
+			if (Input.GetKeyDown (KeyCode.M))		{myState = States.upper_hatch_open;}
 		}
 	
 	}
@@ -575,7 +577,7 @@ private Race myRace;
 	void upper_hatch_open() {
 		text.text = ("You open the hatch and pull yourself up into a storage area. Just ") +
 					("in time it seems, as a huge crash echoes behind you, followed by the ") +
-					("rush of water.\n\nSeems something gave way. Another lucky escape.\n\n ") +
+					("rush of water.\n\nSeems something gave way. Another lucky escape.\n\n") +
 					("Press L to look around.") ;
 		
 		if (Input.GetKeyDown (KeyCode.L))		{myState = States.upper_storage_0;}
@@ -586,7 +588,7 @@ private Race myRace;
 		text.text = ("A couple of lanterns light this tightly packed storage room. Large boxes ") +
 					("bearing the mark of the raven stand atop each other, well secured against ") +
 					("the ship’s violent rocking.\n\nTwo small walkways have been left between the boxes, ") +
-					("one leading to a small door, the other behind a particularly tight-set.")  +
+					("one leading to a small door, the other behind a particularly tight-set ")  +
 					("pair of crates.\n\nPress D to check the door, or B to slip Behind the boxes.");
 		
 		if (Input.GetKeyDown (KeyCode.D))		{myState = States.upper_door_0;}
@@ -597,7 +599,7 @@ private Race myRace;
 	void upper_door_0() {
 		text.text = ("The wooden door does little to quiet the raging storm outside. ") +
 					("Judging by the howl of the wind and the rain seeping under the frame, ") +
-					("this door must lead to the deck of the ship.\nPress O to head Outside, ") +
+					("this door must lead to the deck of the ship.\n\nPress O to head Outside, ") +
 					("or R to return.");
 					
 		if (Input.GetKeyDown (KeyCode.O))		{myState = States.upper_deck_door;}
@@ -607,20 +609,20 @@ private Race myRace;
 	
 	void behind_boxes_0() {
 		text.text = ("It’s a tight fit, but behind the boxes you find a small cubbyhole. ") +
-					("It seems someone has been hiding away here. An old pipe and dusty ") +
+					("It seems someone has been hiding away here.\n\nAn old pipe and dusty ") +
 					("book sit atop a box, alongside a crowbar. To the left is another small ") +
-					("box that looks to have been pried open.\n\nPress B to inspect the box") +
+					("box that looks to have been pried open.\n\nPress L to look inside the box ") +
 					("or R to return.");
 					
-		if (Input.GetKeyDown (KeyCode.B))		{myState = States.treasure;}
+		if (Input.GetKeyDown (KeyCode.L))		{myState = States.treasure;}
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.upper_storage_0;}
 		
 	}
 	
 	void treasure() {
 		text.text = ("The box is full of treasure! Gold coins and valuable gems, all bundled into ") +
-					("small, wooden display boxes.  You quickly grab up all you can carry and ") +
-					("squeeze back out of the cubbyhole. Press R to return.");
+					("small, wooden display boxes.\n\nYou quickly grab up all you can carry and ") +
+					("squeeze back out of the cubbyhole.\n\nPress R to return.");
 		
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.upper_storage_1;}
 
@@ -639,9 +641,9 @@ private Race myRace;
 	}
 	
 	void behind_boxes_1() {
-		text.text = ("It’s a tight fit, but you slip behind the boxes once more. ") +
+		text.text = ("It’s a tight fit, but you slip behind the boxes once more.\n\n") +
 					("The box of treasures remains open, and you wish someone had ") +
-					("left a bag to carry them in.\n\nPress R to return.");
+					("left a bag to carry more in.\n\nPress R to return.");
 
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.upper_storage_1;}
 
@@ -650,7 +652,7 @@ private Race myRace;
 	void upper_door_1() {
 		text.text = ("The wooden door does little to quiet the raging storm outside. ") +
 					("Judging by the howl of the wind and the rain seeping under the frame, ") +
-					("this door must lead to the deck of the ship.\nPress O to head Outside, ") +
+					("this door must lead to the deck of the ship.\n\nPress O to head Outside, ") +
 					("or R to return.");
 					
 		if (Input.GetKeyDown (KeyCode.O))		{myState = States.upper_deck_door;}
@@ -673,9 +675,9 @@ private Race myRace;
 					("He is staring out through a spyglass, towards the attacking ship.\n\n") +
 					("It’s a wonder he hasn’t noticed you.\n\nDown to your left, a lifeboat ") +
 					("hangs from the deck below. You could probably jump straight down ") +
-					("with a little luck.\n\nPress L to take a closer Look at the sailor, or J to Jump.");
+					("with a little luck.\n\nPress S to take a closer look at the Sailor, or J to Jump.");
 		
-		if (Input.GetKeyDown (KeyCode.L))		{myState = States.upper_guard;}
+		if (Input.GetKeyDown (KeyCode.S))		{myState = States.upper_guard;}
 		if (Input.GetKeyDown (KeyCode.J))		{myState = States.boat_up_1;}
 		
 	}
@@ -684,7 +686,7 @@ private Race myRace;
 		text.text = ("Judging by the quality of his clothes, this man must be a ranking ") +
 					("officer of some description. He seems focused on the battle for now, ") +
 					("but there’s no telling when he’ll notice your presence.\n\nPress ") +
-					(" R to return.");
+					("R to return.");
 					
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.upper_deck;}
 
@@ -713,9 +715,9 @@ private Race myRace;
 		text.text = ("After a few minutes rowing, a flash of lightning illuminates the world ") +
 					("around you.\n\nBehind you is ship you just escaped from, locked in battle with ") +
 					("another vessel. Ahead is a rocky shoreline, and your only hope of freedom.\n\n") +
-					("Press R to row harder.") ;
+					("Press P to press on.") ;
 					
-		if (Input.GetKeyDown (KeyCode.R))		{myState = States.beach;}
+		if (Input.GetKeyDown (KeyCode.P))		{myState = States.beach;}
 		
 	}
 	
@@ -733,7 +735,7 @@ private Race myRace;
 	void escape() {
 		text.text = ("Running up the scree and into the damp undergrowth, the sound of  ") +
 					("the storm dims somewhat.\n\nIn the darkness you have no idea where ") +
-					("you have landed, only that your last hope is to keep running.\n\nGood Luck.\n\n ") +
+					("you have landed, only that your last hope is to keep running.\n\nGood Luck.\n\n") +
 					("Congratulations! Press R to restart.") ;
 		
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.start;}
