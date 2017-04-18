@@ -117,9 +117,9 @@ private Race myRace;
 					("training, you have become a respected and successful sword ") +
 					("for hire across the land.\n\nUnfortunately danger comes with the ") +
 					("territory, and this particular job could have gone better.\n\n") +
-					("Press W to wake up.");
+					("Press U to wake up.");
 		
-		if (Input.GetKeyDown (KeyCode.W))		{myState = States.cell;}
+		if (Input.GetKeyDown (KeyCode.U))		{myState = States.cell;}
 	}
 	
 	void t_cell () {
@@ -127,9 +127,9 @@ private Race myRace;
 					("self as an entrepreneur.\n\nAdmittedly your methods may be a ") +
 					("touch unorthodox, and you know more about lockpicking than ") +
 					("is probably healthy, but you’ve done well for yourself until ") +
-					("this particular setback.\n\nPress W to wake up.");
+					("this particular setback.\n\nPress U to wake up.");
 		
-		if (Input.GetKeyDown (KeyCode.W))		{myState = States.cell;}		
+		if (Input.GetKeyDown (KeyCode.U))		{myState = States.cell;}		
 	}
 	
 	void w_cell () {
@@ -137,9 +137,9 @@ private Race myRace;
 					("brought you both power and peril from a young age.\n\nIt would ") +
 					("now seem that the dangers of your bloodline have caught up ") +
 					("with you, as you sail towards unknown lands and an unknown  ") +
-					("future.\n\nPress W to wake up.");
+					("future.\n\nPress U to wake up.");
 					
-		if (Input.GetKeyDown (KeyCode.W))		{myState = States.cell;}
+		if (Input.GetKeyDown (KeyCode.U))		{myState = States.cell;}
 	}
 					
 					
@@ -178,7 +178,7 @@ private Race myRace;
 	}
 	
 	void cell_open() {
-		text.text = ("The cell door is now swinging open. On closer inspection you see") +
+		text.text = ("The cell door is now swinging open. On closer inspection you see ") +
 					("a small cannonball lodged in the metal lock mechanism.") +
 					("\n\nA lucky escape indeed!\n\nPress C to enter the corridor");
 					
@@ -248,7 +248,7 @@ private Race myRace;
 	
 	void lamp_0() {
 		text.text = ("This old lamp looks to have been smashed recently, and a film ") +
-					("of oil has leaked into the water here.\n\nPress R to return. ") ;
+					("of oil has leaked into the water here.\n\nPress R to return.") ;
 					
 		if (Input.GetKeyDown (KeyCode.R))		{myState = States.lower_storage_0;}
 		
@@ -408,7 +408,7 @@ private Race myRace;
 		text.text = ("As the last sailor falls to the ground, you are free to take a moment to ") +
 					("catch your breath and find your belongings.\n\nOn the left is a box  ") +
 					("of varying equipment, and at the opposite end of the room is a doorway.\n\n") +
-					("Press E to check the equipment box, or D to check the door. ");
+					("Press E to check the equipment box, or D to check the door.");
 					
 		if (Input.GetKeyDown (KeyCode.E))		{myState = States.equipment;}
 		if (Input.GetKeyDown (KeyCode.D))		{myState = States.galley_door;}
@@ -459,9 +459,9 @@ private Race myRace;
 	}
 	
 	void t_galley() {
-		text.text = ("With the pair distracted, it should be simple to move undetected.  ") +
+		text.text = ("With the pair distracted, it should be simple to move undetected. ") +
 					("The sound of scraping crockery should mask your footsteps, and the tables ") +
-					("could provide cover to slip over to the equipment box.\n\nPress  ") +
+					("could provide cover to slip over to the equipment box.\n\nPress ") +
 					("S to Sneak to your equipment. ");
 					
 		if (Input.GetKeyDown (KeyCode.S))		{myState = States.t_equipment;}
@@ -471,7 +471,7 @@ private Race myRace;
 	void t_equipment() {
 		text.text = ("The box is full of assorted equipment, presumably from various ") +
 					("prisoners the ship has taken. You quickly spot your own.\n\n") +
-					("Quietly slipping your leather armour over your head and donning your  ") +
+					("Quietly slipping your leather armour over your head and donning your ") +
 					("cloak, you immediately feel more comfortable. Your daggers slip seamlessly ") +
 					("into their sheathes as you turn to face the two unaware sailors.\n\n") +
 					("Press A to attack or D to move towards the door.");
@@ -733,7 +733,7 @@ private Race myRace;
 	}
 	
 	void escape() {
-		text.text = ("Running up the scree and into the damp undergrowth, the sound of  ") +
+		text.text = ("Running up the scree and into the damp undergrowth, the sound of ") +
 					("the storm dims somewhat.\n\nIn the darkness you have no idea where ") +
 					("you have landed, only that your last hope is to keep running.\n\nGood Luck.\n\n") +
 					("Congratulations! Press R to restart.") ;
